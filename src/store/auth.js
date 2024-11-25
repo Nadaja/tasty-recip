@@ -22,6 +22,16 @@ export default {
             state.userLogin = userData;
             state.isLogin = loginStatus;
         },
+
+        setUserLogout(state) {
+            state.token = null
+            state.userLogin = {}
+            state.isLogin = false
+            state.tokenExpirationDate = null
+            Cookies.remove("jwt");
+            Cookies.remove("tokenExpirationDate");
+            Cookies.remove("UID");
+        }
     },
     actions: {
         async getRegisterData({ commit, dispatch, state }, payload) {
